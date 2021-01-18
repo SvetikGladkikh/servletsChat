@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="true">
+
+    <display-name>maven-servlet-sample</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>ru.js.chat.servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>ru.js.chat.servlets.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>messageListServlet</servlet-name>
+        <servlet-class>ru.js.chat.servlets.MessageListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>messageListServlet</servlet-name>
+        <url-pattern>/messages</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>newMessageServlet</servlet-name>
+        <servlet-class>ru.js.chat.servlets.NewMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newMessageServlet</servlet-name>
+        <url-pattern>/newMessage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>blockedUsersListServlet</servlet-name>
+        <servlet-class>ru.js.chat.servlets.BlockedUsersListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>blockedUsersListServlet</servlet-name>
+        <url-pattern>/blockedUsers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>blockUserServlet</servlet-name>
+        <servlet-class>ru.js.chat.servlets.BlockUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>blockUserServlet</servlet-name>
+        <url-pattern>/blockUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>blockedUserMessageServlet</servlet-name>
+        <servlet-class>ru.js.chat.servlets.BlockedUserMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>blockedUserMessageServlet</servlet-name>
+        <url-pattern>/blockedUserMessage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>unblockUserServlet</servlet-name>
+        <servlet-class>ru.js.chat.servlets.UnblockUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>unblockUserServlet</servlet-name>
+        <url-pattern>/unblockUser</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>authUserFilter</filter-name>
+        <filter-class>ru.js.chat.filters.AuthUserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>authUserFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AdminUserFilter</filter-name>
+        <filter-class>ru.js.chat.filters.AdminUserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminUserFilter</filter-name>
+        <url-pattern>/blockedUsers</url-pattern>
+        <url-pattern>/unblockUser</url-pattern>
+        <url-pattern>/blockUser</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>blockedUserFilter</filter-name>
+        <filter-class>ru.js.chat.filters.BlockedUserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>blockedUserFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>
